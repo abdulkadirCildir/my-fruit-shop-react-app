@@ -11,7 +11,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
-      padding: "10px 0",
+      padding: "10px 24px",
     borderBottom: `1px solid ${theme.palette.divider}`,
     display: "flex",
     flexDirection: "row",
