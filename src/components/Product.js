@@ -54,9 +54,7 @@ export default function Product({ categoryUrl, post }) {
           <CardMedia
             className={classes.media}
             image={
-              product.photo_url &&
-              `${process.env.REACT_APP_API_BASE_URL}${product.photo_url}`
-                .statusCode !== 404
+              product.photo_url
                 ? `${process.env.REACT_APP_API_BASE_URL}${product.photo_url}`
                 : "https://cortelia-systems.com/uploads/categories/Spare%20Parts_1608196111.png"
             }

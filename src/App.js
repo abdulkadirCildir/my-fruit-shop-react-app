@@ -10,7 +10,12 @@ require("dotenv").config();
 const App = () => {
   const [productList, setProductList] = useState([]);
   const [nextUrl, setNextUrl] = useState();
+  
+  useEffect(() => {
+    getProductList();
+  }, []);
 
+  
   const getProductList = async (
     url = `${process.env.REACT_APP_API_BASE_URL}/shop/products/`
   ) => {
@@ -32,10 +37,6 @@ const App = () => {
       }
     }
   };
-
-  useEffect(() => {
-    getProductList();
-  }, []);
 
   const handleLoadMore = () => {
     getProductList(nextUrl);

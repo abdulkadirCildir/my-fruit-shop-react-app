@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Product from "./Product";
+import Product2 from "./Product2";
 import axios from "axios";
 require("dotenv").config();
 
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ProductList({ productList, hasNext, loadMore }) {
   const classes = useStyles();
   const [categories, setCategories] = useState([]);
+//   const [categoryProducts, setCategoryProducts] = useState([])
   const categoriesUrl = "/shop/categories/";
 
   const getCategories = async (
@@ -36,6 +38,8 @@ export default function ProductList({ productList, hasNext, loadMore }) {
     try {
       const result = await axios.get(url);
       setCategories(result?.data?.categories);
+      console.log("CATEGORIES:", result?.data)
+      
     } catch ({ response }) {
       if (response) {
         console.log(response.data.non_field_errors[0]);
@@ -49,6 +53,30 @@ export default function ProductList({ productList, hasNext, loadMore }) {
     getCategories();
   }, []);
 
+  console.log("CATEGORY_FIRST_NAME:", categories.name)
+
+//   const getCategoryProducts = async (
+//     url = `${process.env.REACT_APP_API_BASE_URL}${categoriesUrl}${categories.name}`
+//   ) => {
+//     try {
+//       const result = await axios.get(url);
+//       console.log("URL:", url);
+//       setCategoryProducts(result?.data?.products);
+//       console.log("CATEGORY_NAME:", categories.name)
+//       console.log("CATEGORY_RESULT:", result?.data)
+//     } catch ({ response }) {
+//       if (response) {
+//         console.log(response.data.non_field_errors[0]);
+//       } else {
+//         console.log("Something went wrong!");
+//       }
+//     }
+//   };
+
+//   useEffect(() => {
+//     getCategoryProducts();
+//   }, []);
+
   return (
     <Tabs className={classes.mainGrid}>
       <TabList className={classes.tabGrid}>
@@ -61,7 +89,7 @@ export default function ProductList({ productList, hasNext, loadMore }) {
         {!productList
           ? "Loading..."
           : productList.map((innerItems, id) => (
-            <Product key={id} post={innerItems} />
+            <Product2 key={id} post={innerItems} />
           ))}
       </TabPanel>
 
@@ -70,7 +98,7 @@ export default function ProductList({ productList, hasNext, loadMore }) {
             <TabPanel className={classes.productStyle}>
               {productList
           ? productList.map((innerItems, id) => (
-              <Product key={id} categoryUrl={items.category_url} post={innerItems} />
+              <Product2 key={id} categoryUrl={items.category_url} post={innerItems} />
             ))
           : "No data available"}
             </TabPanel>
