@@ -6,18 +6,6 @@ import axios from "axios";
 import ProductList from "./components/ProductList";
 require("dotenv").config();
 
-// const sections = [
-//   { title: 'Technology', url: '#' },
-//   { title: 'Design', url: '#' },
-//   { title: 'Culture', url: '#' },
-//   { title: 'Business', url: '#' },
-//   { title: 'Politics', url: '#' },
-//   { title: 'Opinion', url: '#' },
-//   { title: 'Science', url: '#' },
-//   { title: 'Health', url: '#' },
-//   { title: 'Style', url: '#' },
-//   { title: 'Travel', url: '#' },
-// ];
 
 const App = () => {
   const [productList, setProductList] = useState([]);
