@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import SearchIcon from "@material-ui/icons/Search";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import TextField from "@material-ui/core/TextField";
@@ -11,7 +9,7 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
-      padding: "10px 24px",
+    padding: "10px 24px",
     borderBottom: `1px solid ${theme.palette.divider}`,
     display: "flex",
     flexDirection: "row",
@@ -21,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   toolbarTitle: {
     flex: 1,
     fontFamily: 'Dancing Script, cursive',
+    fontSize: "2rem",
   },
   toolbarSecondary: {
     justifyContent: "space-between",
@@ -31,8 +30,6 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
 }));
-
-
 
 const top100Films = [
     { title: 'The Shawshank Redemption', year: 1994 },
@@ -164,7 +161,7 @@ export default function Header(props) {
           )}
         />
       </Toolbar>
-      <Toolbar
+      {/* <Toolbar
         component="nav"
         variant="dense"
         className={classes.toolbarSecondary}
@@ -181,7 +178,7 @@ export default function Header(props) {
             {section.title}
           </Link>
         ))}
-      </Toolbar>
+      </Toolbar> */}
     </React.Fragment>
   );
 }
