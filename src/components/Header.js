@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { AppContext } from "../context/AppContext";
+require("dotenv").config();
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -58,7 +59,7 @@ export default function Header(props) {
           align="left"
           className={classes.toolbarTitle}
         > 
-        <a href="/" style={{textDecorationLine:"none", color:"#272727"}}>
+        <a href={process.env.REACT_APP_GITHUB_URL} style={{textDecorationLine:"none", color:"#272727"}}>
           {title}
         </a>
         </Typography>
