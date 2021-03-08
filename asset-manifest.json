@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/my-fruit-shop-react-app/static/css/main.2c8dc03f.chunk.css",
-    "main.js": "/my-fruit-shop-react-app/static/js/main.7e140745.chunk.js",
-    "main.js.map": "/my-fruit-shop-react-app/static/js/main.7e140745.chunk.js.map",
+    "main.js": "/my-fruit-shop-react-app/static/js/main.a9da6d3e.chunk.js",
+    "main.js.map": "/my-fruit-shop-react-app/static/js/main.a9da6d3e.chunk.js.map",
     "runtime-main.js": "/my-fruit-shop-react-app/static/js/runtime-main.36898b15.js",
     "runtime-main.js.map": "/my-fruit-shop-react-app/static/js/runtime-main.36898b15.js.map",
     "static/js/2.6acbb505.chunk.js": "/my-fruit-shop-react-app/static/js/2.6acbb505.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.36898b15.js",
     "static/js/2.6acbb505.chunk.js",
     "static/css/main.2c8dc03f.chunk.css",
-    "static/js/main.7e140745.chunk.js"
+    "static/js/main.a9da6d3e.chunk.js"
   ]
 }
