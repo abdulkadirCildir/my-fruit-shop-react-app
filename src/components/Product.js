@@ -24,16 +24,16 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Product({ categoryUrl, post }) {
+export default function Product({ post }) {
   const classes = useStyles();
   const [product, setProduct] = useState();
 
-  const getProduct = async (
-    url = `${process.env.REACT_APP_API_BASE_URL}${post.product_url}`
-  ) => {
+  const getProduct = async (val) => {
     try {
+      const url = `${process.env.REACT_APP_API_BASE_URL}${val}`
       const result = await axios.get(url);
       setProduct(result?.data);
+      // console.log("RESULT´_DATA:", result?.data)
     } catch ({ response }) {
       if (response) {
         console.log(response.data.non_field_errors[0]);
@@ -44,8 +44,8 @@ export default function Product({ categoryUrl, post }) {
   };
 
   useEffect(() => {
-    getProduct();
-  }, []);
+    getProduct(post.product_url);
+  }, [post.product_url]);
 
   return (
     <Card className={classes.root}>
