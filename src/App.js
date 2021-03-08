@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./components/Header";
 import axios from "axios";
 import ProductList from "./components/ProductList";
+import {AppContext} from './context/AppContext';
 require("dotenv").config();
 
-
 const App = () => {
-  const [allProducts, setAllProducts] = useState([]);
-  const [nextUrl, setNextUrl] = useState();
-  
+  const { allProducts, setAllProducts, nextUrl, setNextUrl } = useContext(AppContext);
+  // const [search, setSearch] = useState();
+
   useEffect(() => {
     getProductList();
   }, []);
-  
+
   const getProductList = async (
     url = `${process.env.REACT_APP_API_BASE_URL}/shop/products/`
   ) => {
@@ -22,12 +22,12 @@ const App = () => {
       const result = await axios.get(url);
       setAllProducts(result?.data?.products);
       // console.log("RESULTS:", result)
-      if(result?.data?.meta?.next_url){
+      if (result?.data?.meta?.next_url) {
         setNextUrl(
           `${process.env.REACT_APP_API_BASE_URL}` + result?.data?.meta?.next_url
         );
       } else {
-        setNextUrl(null)
+        setNextUrl(null);
       }
     } catch ({ response }) {
       if (response) {
@@ -42,12 +42,12 @@ const App = () => {
     const result = await axios.get(nextUrl);
     setAllProducts([...allProducts, ...result?.data?.products]);
     // console.log("RESULT:", result)
-    if(result?.data?.meta?.next_url){
+    if (result?.data?.meta?.next_url) {
       setNextUrl(
         `${process.env.REACT_APP_API_BASE_URL}` + result?.data?.meta?.next_url
       );
     } else {
-      setNextUrl(null)
+      setNextUrl(null);
     }
   };
 
@@ -56,20 +56,18 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <Header title="My Fruit Shop" />
-      <Container maxWidth="lg">
-        {!allProducts.length == 0 ?
-        <ProductList
-          allProducts={allProducts}
-          setAllProducts={setAllProducts}
-          getProductList={getProductList}
-          setNextUrl={setNextUrl}
-          loadMore={handleLoadMore}
-          hasNext={!!nextUrl}
-        /> : "Loading.."
-        }
-      </Container>
+        <CssBaseline />
+        <Header title="My Fruit Shop" />
+        <Container maxWidth="lg">
+          {allProducts?.length == 0 ? (
+            "Loading" ) : (
+            <ProductList
+              getProductList={getProductList}
+              loadMore={handleLoadMore}
+              hasNext={!!nextUrl}
+            />
+          )}
+        </Container>
     </React.Fragment>
   );
 };

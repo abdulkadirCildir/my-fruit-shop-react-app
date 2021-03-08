@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Product from "./Product";
 import Categories from "./Categories";
 import axios from "axios";
+import {AppContext} from '../context/AppContext';
 require("dotenv").config();
 
 const useStyles = makeStyles((theme) => ({
@@ -25,15 +26,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ProductList({
-  allProducts,
   getProductList,
-  setNextUrl,
-  setAllProducts,
   hasNext,
   loadMore,
 }) {
   const classes = useStyles();
-  const [productList, setProductList] = useState(allProducts);
+  const { allProducts, setNextUrl, productList, setProductList } = useContext(AppContext);
 
   const categoriesUrl = "/shop/categories/";
 
@@ -63,8 +61,6 @@ export default function ProductList({
     <div className={classes.mainGrid}>
       <Categories
         getProductList={getProductList}
-        setAllProducts={setAllProducts}
-        setProductList={setProductList}
         getProductsById={getProductsById}
       />
       <div className={classes.productStyle}>
@@ -90,7 +86,6 @@ export default function ProductList({
           )}
         </Box>
       </Box>
-      {/* </Tabs> */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -27,12 +27,16 @@ const useStyles = makeStyles({
 export default function Product({ post }) {
   const classes = useStyles();
   const [product, setProduct] = useState();
+  const ref = useRef();
+
 
   const getProduct = async (val) => {
     try {
       const url = `${process.env.REACT_APP_API_BASE_URL}${val}`
       const result = await axios.get(url);
-      setProduct(result?.data);
+      if(ref.current == true){
+        setProduct(result?.data);
+      }
       // console.log("RESULT´_DATA:", result?.data)
     } catch ({ response }) {
       if (response) {
@@ -44,8 +48,11 @@ export default function Product({ post }) {
   };
 
   useEffect(() => {
+    ref.current = true
     getProduct(post.product_url);
+    return () => ref.current = false
   }, [post.product_url]);
+
 
   return (
     <Card className={classes.root}>

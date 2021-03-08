@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+import {AppContext} from '../context/AppContext';
 require("dotenv").config();
 
 const useStyles = makeStyles((theme) => ({
@@ -10,16 +11,19 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: "wrap",
     gap: "1rem",
   },
+  buttonStyle: {
+    color: "red",
+  },
 }));
 
 export default function Categories({
   getProductList,
-  setProductList,
-  setAllProducts,
   getProductsById,
 }) {
   const classes = useStyles();
+  const { setAllProducts, setProductList } = useContext(AppContext);
   const [categories, setCategories] = useState([]);
+  const [ selectedCategory, setSelectedCategory ] = useState("ALL");
 
   const categoriesUrl = "/shop/categories/";
 
@@ -43,22 +47,30 @@ export default function Categories({
     }
   };
 
-  //   console.log("CATEGORY_FIRST_NAME:", categories);
+    console.log("SELECTEDCATEGORY:", selectedCategory);
 
   return (
     <div className={classes.tabGrid}>
       <Button
+      style={{ border: selectedCategory == "ALL" ? "solid 3px" : "none"}}
         onClick={() => {
-          setProductList([]);
-          setAllProducts([]);
-          getProductList();
-        }}
-      >
+            setSelectedCategory("ALL") 
+            setProductList([]);
+            setAllProducts([]);
+            getProductList();
+        }}>
         All
       </Button>
+
       {categories
-        ? categories.map((items) => (
-            <Button onClick={() => getProductsById(items.name)}>
+        ? categories.map((items, key) => (
+            <Button 
+            key = {key}
+            style={{ border: selectedCategory == items.name ? "solid 3px" : "none"}}
+            onClick={() => {
+                getProductsById(items.name)
+                setSelectedCategory(items.name)
+                }}>
               {items.name}
             </Button>
           ))
