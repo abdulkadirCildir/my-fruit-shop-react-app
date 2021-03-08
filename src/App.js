@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "./components/Header";
@@ -9,7 +9,6 @@ require("dotenv").config();
 
 const App = () => {
   const { allProducts, setAllProducts, nextUrl, setNextUrl } = useContext(AppContext);
-  // const [search, setSearch] = useState();
 
   useEffect(() => {
     getProductList();

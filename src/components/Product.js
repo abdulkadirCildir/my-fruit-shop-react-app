@@ -37,7 +37,7 @@ export default function Product({ post }) {
       if(ref.current == true){
         setProduct(result?.data);
       }
-      // console.log("RESULT´_DATA:", result?.data)
+      // console.log("RESULT_DATA:", result?.data)
     } catch ({ response }) {
       if (response) {
         console.log(response.data.non_field_errors[0]);
