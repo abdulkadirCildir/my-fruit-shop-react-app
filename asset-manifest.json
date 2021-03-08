@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/my-fruit-shop-react-app/static/css/main.2c8dc03f.chunk.css",
+    "main.js": "/my-fruit-shop-react-app/static/js/main.72066db8.chunk.js",
+    "main.js.map": "/my-fruit-shop-react-app/static/js/main.72066db8.chunk.js.map",
+    "runtime-main.js": "/my-fruit-shop-react-app/static/js/runtime-main.36898b15.js",
+    "runtime-main.js.map": "/my-fruit-shop-react-app/static/js/runtime-main.36898b15.js.map",
+    "static/js/2.95fce6f5.chunk.js": "/my-fruit-shop-react-app/static/js/2.95fce6f5.chunk.js",
+    "static/js/2.95fce6f5.chunk.js.map": "/my-fruit-shop-react-app/static/js/2.95fce6f5.chunk.js.map",
+    "static/js/3.bb756cfa.chunk.js": "/my-fruit-shop-react-app/static/js/3.bb756cfa.chunk.js",
+    "static/js/3.bb756cfa.chunk.js.map": "/my-fruit-shop-react-app/static/js/3.bb756cfa.chunk.js.map",
+    "index.html": "/my-fruit-shop-react-app/index.html",
+    "static/css/main.2c8dc03f.chunk.css.map": "/my-fruit-shop-react-app/static/css/main.2c8dc03f.chunk.css.map",
+    "static/js/2.95fce6f5.chunk.js.LICENSE.txt": "/my-fruit-shop-react-app/static/js/2.95fce6f5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.36898b15.js",
+    "static/js/2.95fce6f5.chunk.js",
+    "static/css/main.2c8dc03f.chunk.css",
+    "static/js/main.72066db8.chunk.js"
+  ]
+}
