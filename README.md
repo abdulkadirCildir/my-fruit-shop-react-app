@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+__<span style="color:red">There is `.env` file for the root API under the src folder in the project. </span>__
+
+Install `dotenv` with __*yarn*__ `yarn add dotenv`, with __*npm*__ `npm install dotenv`.
+
+Set the root API in .env to this variable:
+
+`REACT_APP_API_BASE_URL = ' '`
+
+
 ## Available Scripts
 
 In the project directory, you can run:
