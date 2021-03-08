@@ -59,7 +59,7 @@ export default function Header(props) {
           align="left"
           className={classes.toolbarTitle}
         > 
-        <a href={process.env.REACT_APP_GITHUB_URL} style={{textDecorationLine:"none", color:"#272727"}}>
+        <a href="/my-fruit-shop-react-app" style={{textDecorationLine:"none", color:"#272727"}}>
           {title}
         </a>
         </Typography>
