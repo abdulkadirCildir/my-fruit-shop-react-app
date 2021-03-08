@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import Product from "./Product";
 import axios from "axios";
 require("dotenv").config();
 
 const useStyles = makeStyles((theme) => ({
-  mainGrid: {
-    marginTop: theme.spacing(3),
-  },
   tabGrid: {
     display: "flex",
     flexWrap: "wrap",
     gap: "1rem",
-  },
-  productStyle: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "1rem",
-    justifyContent: "center",
   },
 }));
 
@@ -27,7 +16,7 @@ export default function Categories({
   getProductList,
   setProductList,
   setAllProducts,
-  productsById,
+  getProductsById,
 }) {
   const classes = useStyles();
   const [categories, setCategories] = useState([]);
@@ -69,7 +58,7 @@ export default function Categories({
       </Button>
       {categories
         ? categories.map((items) => (
-            <Button onClick={() => productsById(items.name)}>
+            <Button onClick={() => getProductsById(items.name)}>
               {items.name}
             </Button>
           ))

@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ProductList({
   allProducts,
+  getProductList,
+  setNextUrl,
+  setAllProducts,
   hasNext,
   loadMore,
-  setNextUrl,
-  getProductList,
-  setAllProducts,
 }) {
   const classes = useStyles();
   const [productList, setProductList] = useState(allProducts);
@@ -42,7 +42,7 @@ export default function ProductList({
   }, [allProducts]);
 
 
-  const productsById = async (name) => {
+  const getProductsById = async (name) => {
     try {
       const url =
         `${process.env.REACT_APP_API_BASE_URL}${categoriesUrl}` + name;
@@ -65,7 +65,7 @@ export default function ProductList({
         getProductList={getProductList}
         setAllProducts={setAllProducts}
         setProductList={setProductList}
-        productsById={productsById}
+        getProductsById={getProductsById}
       />
       <div className={classes.productStyle}>
         {!productList
